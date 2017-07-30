@@ -14,7 +14,8 @@ import android.widget.TextView;
  * a palindrome is a word that spelled backwards is the same word, example - nun
  * if it is palindrome, display both words, and "Good Job.."
  * if not throw an error msg on the textview
- * TODO Add functionality such that even words with spaces can be done, like " Race Car = Race Car in reverse*/
+ * TODO Add functionality such that even words with spaces can be done, like " Race Car = Race Car in reverse
+ * TODO words with a mix of caps do not work - example "Nun" - easy fix but no time today*/
 public class MainActivity extends AppCompatActivity {
     //Button check;
     EditText input;
