@@ -14,8 +14,7 @@ import android.widget.TextView;
  * a palindrome is a word that spelled backwards is the same word, example - nun
  * if it is palindrome, display both words, and "Good Job.."
  * if not throw an error msg on the textview
- * TODO Add functionality such that even words with spaces can be done, like " Race Car = Race Car in reverse
- * TODO words with a mix of caps do not work - example "Nun" - easy fix but no time today*/
+ * fixed toDos*/
 public class MainActivity extends AppCompatActivity {
     //Button check;
     EditText input;
@@ -38,20 +37,21 @@ public class MainActivity extends AppCompatActivity {
     public void clickIT(View v){
         input = (EditText) findViewById(R.id.edit_view);
         String content = input.getText().toString();
-        if(check(content) == false){
-            content ="Error String contains nonletters, only letters are allowed,\n currently spaces are also not supported";
+        //st.replaceAll("\\s+","")
+        String temp;
+        temp = content.replaceAll("\\s+", "");
+        if(check(temp) == false){
+            content ="Error String contains nonletters, only letters are allowed,\n ex. race car or nun";
             displayView(content);
         }
-        if(check(content)){
-            if(checkPalindrome(content) == false){
-                String newContent =new StringBuilder(content).reverse().toString();
-                content ="This is the word in reverse -"+ newContent+"\n it is not a palindrome";
+        if(check(temp)){
+            if(checkPalindrome(temp) == false){
+                content =content+"-  Is not a palindrome";
                 displayView(content);
             }
 
             else {
-                String newContent =new StringBuilder(content).reverse().toString();
-                displayView("The word -"+content+ " and its palindrome -" + newContent + " \nGood Job finding one!");
+                displayView("The word -"+content.toLowerCase()+ " is a palindrome ");
             }
         }
     }
@@ -70,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkPalindrome(String s){
         int n = s.length();
+        String temp =s.toLowerCase();
         for(int i=0; i<(n/2); ++i){
-            if(s.charAt(i) != s.charAt(n - i -1)){
+            if(temp.charAt(i) != temp.charAt(n - i -1)){
                 return false;
             }
         }
